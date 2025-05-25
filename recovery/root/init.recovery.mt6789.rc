@@ -118,22 +118,26 @@ on property:crypto.ready=1
     start vendor.keymint-trustkernel
 
 on property:hwservicemanager.ready=true
-    start vendor.keymint-trustkernel 
+    start vendor.keymint-trustkernel
+    start keymaster_attestation-1-1
     start vendor.gatekeeper-1-0
 
 on property:ro.crypto.state=unsupported
     stop teed
-    stop vendor.keymint-trustkernel 
+    stop vendor.keymint-trustkernel
+    stop keymaster_attestation-1-1
     stop vendor.gatekeeper-1-0
 
 on property:ro.crypto.state=unencrypted
     stop teed
-    stop vendor.keymint-trustkernel 
+    stop vendor.keymint-trustkernel
+    stop keymaster_attestation-1-1
     stop vendor.gatekeeper-1-0
 
 on property:twrp.decrypt.done=true
     stop teed
-    stop vendor.keymint-trustkernel 
+    stop vendor.keymint-trustkernel
+    stop keymaster_attestation-1-1
     stop vendor.gatekeeper-1-0
 
 on post-fs-data
